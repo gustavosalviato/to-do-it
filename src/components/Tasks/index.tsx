@@ -1,3 +1,4 @@
+import Task from '../Task'
 import styles from './tasks.module.css'
 
 const Tasks = () => {
@@ -17,12 +18,7 @@ const Tasks = () => {
             </header>
 
             <div className={styles.list}>
-                <div>;;;</div>
-                <div>;;;</div>
-                <div>;;;</div>
-                <div>;;;</div>
-                <div>;;;</div>
-                <div>;;;</div>
+                <Task />
             </div>
         </section>
     )
