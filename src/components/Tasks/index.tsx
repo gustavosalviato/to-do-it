@@ -1,9 +1,16 @@
 import { useState } from 'react'
+import { ITask } from '../../Types/ITask'
 import Task from '../Task'
 import TaskEdit from '../TaskEdit'
 import styles from './tasks.module.css'
 
-const Tasks = () => {
+type Props = {
+    tasks: ITask[]
+    onDelete: (taskId: string) => void
+    onComplete: (taskId: string) => void
+}
+
+const Tasks = ({ tasks, onDelete, onComplete }: Props) => {
     const [loadEditForm, setLoadEditForm] = useState(true)
 
     return (
@@ -23,7 +30,15 @@ const Tasks = () => {
                 </header>
 
                 <div className={styles.list}>
-                    <Task />
+                    {tasks.map((task, index) => (
+                        <Task
+                            task={task}
+                            key={index}
+                            onDelete={onDelete}
+                            onComplete={onComplete}
+                        />
+                    ))}
+
                 </div>
             </section>
             {loadEditForm && (

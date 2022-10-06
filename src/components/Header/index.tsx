@@ -3,11 +3,16 @@ import styles from './header.module.css'
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { FiBook } from 'react-icons/fi'
 
-const Header = () => {
+type Props = {
+    onAddTask: (taskTitle: string) => void
+}
+const Header = ({ onAddTask }: Props) => {
     const [title, setTitle] = useState('')
 
     const handleSubmit = (event: FormEvent) => {
-        event.preventDefault
+        event.preventDefault()
+
+        onAddTask(title)
 
         setTitle('')
     }
@@ -16,7 +21,7 @@ const Header = () => {
         <header className={styles.header}>
 
 
-            <FiBook size={30} color={'#5e60ce'}/>
+            <FiBook size={30} color={'#5e60ce'} />
             <h1 className={styles.title}><span>To Do</span> It!</h1>
 
 
