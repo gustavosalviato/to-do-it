@@ -1,0 +1,46 @@
+.taskEdit {
+    display: flex;
+    margin-top: 3.3rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all ease-in-out 300ms;
+    transition: 4s;
+}
+
+.editForm {
+    position: absolute;
+    height: 3.375rem;
+    /* bottom: calc(-3.375rem / 2); */
+    width: 100%;
+    max-width: 46rem;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 1rem;
+}
+
+.editForm input {
+    outline: none;
+    border: none;
+    flex: 1;
+    height: 100%;
+    color: var(--gray-100);
+    background: var(--gray-500);
+    padding-left: 8px;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid var(--gray-700);
+}
+
+.editForm button {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    border: none;
+    outline: none;
+    background: var(--purple-dark);
+    padding: 0 1rem;
+    color: white;
+    border-radius: 0.5rem;
+    font-size: 0.95rem
+}
