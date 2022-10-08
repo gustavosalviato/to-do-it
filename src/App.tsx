@@ -51,14 +51,30 @@ function App() {
     setAndSaveTask(newTasks)
   }
 
+  const editTaskTitle = (taskId: string, taskTitle: string) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        return {
+          ...task,
+          title: taskTitle,
+        }
+      }
+      return task
+    })
+
+    setAndSaveTask(newTasks)
+
+  }
+
   return (
     <>
       <Header onAddTask={addTask} />
-      
+
       <Tasks
         tasks={tasks}
         onDelete={deleteTask}
         onComplete={ToggleCompletedTask}
+        onEdit={editTaskTitle}
       />
     </>
   )
