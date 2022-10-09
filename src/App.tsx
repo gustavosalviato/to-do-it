@@ -1,19 +1,22 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Header from "./components/Header"
 import Tasks from "./components/Tasks"
 import { ITask } from "./Types/ITask"
+import api from "./services/api"
 
 function App() {
-  const [tasks, setTask] = useState<ITask[]>(
-    [
-      {
-        id: crypto.randomUUID(),
-        title: 'Estudar NODEJS',
-        isCompleted: true,
+  const [tasks, setTask] = useState<ITask[]>([])
 
-      },
+  useEffect(() => {
+    getTodos()
+  }, [])
 
-    ])
+  const getTodos = async () => {
+    const response = await api.get('/todos')
+
+    setTask(response.data)
+
+  }
 
   const setAndSaveTask = (newTasks: ITask[]) => {
     setTask(newTasks)

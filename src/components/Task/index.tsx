@@ -7,6 +7,7 @@ import { ITask } from '../../Types/ITask'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { FormEvent, useState } from 'react'
+import api from '../../services/api'
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -37,18 +38,49 @@ const Task = ({ task, onDelete, onComplete, onEdit }: Props) => {
 
     const [title, setTitle] = useState('')
 
+    const updateTodoTitle = async () => {
+        await api.put('/todos', {
+            id: task.id,
+            title: title,
+            isCompleted: task.isCompleted
+        })
+    }
 
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault()
 
         onEdit(task.id, title)
-
+        updateTodoTitle()
         handleClose()
+    }
+
+    const deleteTodo = async () => {
+        await api.delete(`/todos/${task.id}`)
+    }
+
+    const toggleTodo = async (task: ITask) => {
+        await api.put('/todos', {
+            id: task.id,
+            title: task.title,
+            isCompleted: !task.isCompleted
+        })
+    }
+
+    const handleDeleteTodo = () => {
+        onDelete(task.id)
+        deleteTodo()
+
+    }
+
+    const handleOnToggleTodo = (task: ITask) => {
+        onComplete(task.id)
+        toggleTodo(task)
+
     }
     return (
         <>
             <section className={styles.task}>
-                <button className={styles.checkContainer} onClick={() => onComplete(task.id)}>
+                <button className={styles.checkContainer} onClick={() => handleOnToggleTodo(task)}>
                     {task.isCompleted ? <AiOutlineCheckCircle size={25} color='var(--purple-dark)' /> : <MdRadioButtonUnchecked color='var(--blue)' size={25} />}
                 </button>
 
@@ -59,7 +91,7 @@ const Task = ({ task, onDelete, onComplete, onEdit }: Props) => {
                         <AiFillEdit size={20} />
                     </button>
 
-                    <button className={styles.buttonItem} onClick={() => onDelete(task.id)}>
+                    <button className={styles.buttonItem} onClick={handleDeleteTodo}>
                         <BsFillTrashFill size={20} />
                     </button>
                 </div>

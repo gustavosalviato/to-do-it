@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react'
 import styles from './header.module.css'
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { FiBook } from 'react-icons/fi'
+import api from '../../services/api'
 
 type Props = {
     onAddTask: (taskTitle: string) => void
@@ -9,11 +10,17 @@ type Props = {
 const Header = ({ onAddTask }: Props) => {
     const [title, setTitle] = useState('')
 
+    const addTodo = async () => {
+        await api.post('/todos', {
+            title: title,
+            isCompleted: false,
+        })
+    }
+
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault()
-
         onAddTask(title)
-
+        addTodo()
         setTitle('')
     }
 
