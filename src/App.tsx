@@ -23,6 +23,8 @@ function App() {
   }
 
   const addTask = (taskTitle: string) => {
+    if (!taskTitle) return
+    
     setAndSaveTask([
       ...tasks,
       {
