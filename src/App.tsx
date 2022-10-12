@@ -4,11 +4,14 @@ import Tasks from "./components/Tasks"
 import { ITask } from "./Types/ITask"
 import api from "./services/api"
 
+const LOCAL_STORAGE_KEY = 'task:savedTasks'
+
 function App() {
   const [tasks, setTask] = useState<ITask[]>([])
 
   useEffect(() => {
     getTodos()
+    loadSavedTask()
   }, [])
 
   const getTodos = async () => {
@@ -18,13 +21,23 @@ function App() {
 
   }
 
+
+
   const setAndSaveTask = (newTasks: ITask[]) => {
     setTask(newTasks)
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks))
+  }
+
+  const loadSavedTask = () => {
+    const saved = localStorage.getItem(LOCAL_STORAGE_KEY)
+    if (saved){
+      setTask(JSON.parse(saved))
+    }
   }
 
   const addTask = (taskTitle: string) => {
     if (!taskTitle) return
-    
+
     setAndSaveTask([
       ...tasks,
       {

@@ -38,7 +38,7 @@ const Header = ({ onAddTask }: Props) => {
         } catch (err) {
             setSuccess(false)
             setError(true)
-            setErrorMsg('cannot add a post')
+            setErrorMsg('Verify if server application is running!')
         }
 
 
