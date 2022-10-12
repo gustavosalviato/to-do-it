@@ -12,18 +12,21 @@ type Props = {
 }
 
 const Tasks = ({ tasks, onDelete, onComplete, onEdit }: Props) => {
+
+    const createdTasks = tasks.length
+    const completedTasks = tasks.filter((task) => task.isCompleted === true)
     return (
         <section className={styles.tasks}>
             <header className={styles.header}>
 
                 <div>
                     <p>Created Tasks</p>
-                    <span>1</span>
+                    <span>{createdTasks}</span>
                 </div>
 
                 <div>
                     <p className={styles.textPurple}>Completed Tasks</p>
-                    <span>0</span>
+                    <span>{completedTasks.length}</span>
                 </div>
             </header>
 
