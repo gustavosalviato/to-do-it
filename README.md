@@ -45,6 +45,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - [React](https://pt-br.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [LocalStorage](https://developer.mozilla.org/pt-BR/docs/Web/API/Window/localStorage)
 
 
 ### Autor
