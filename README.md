@@ -1,16 +1,20 @@
-# to-do-it
+<h1 align="center">
+    <a href="https://todoitdev.netlify.app">🔗 To Do It</a>
+</h1>
+
+<p align="center">🚀 Aplicação de Lista de Tarefas para organização de estudos e tarefas</p>
+
+### Features
+
+- [x] Cadastro de tarefas
+- [x] Concluir tarefas
+- [x] Excluir tarefas
+- [x] Editar tarefas cadastradas
 
 
-## Sobre o projeto
-Esse é um projeto bem simples que desenvolvi, praticando alguns conceitos básicos de React e também é um forma de armazenar meu conhecimento e disponibilizar pra alguém que também está aprendendo igual a mim. 🫡
-
-## Ferramentas utilizadas
-
-* Typescript
-* React-Icons
-* MUI
-* Axios
-
+<h2 align="center">
+    <a href="https://todoitdev.netlify.app">🔗 To Do It</a>
+</h2>
 
 ## Instalação do projeto
 
